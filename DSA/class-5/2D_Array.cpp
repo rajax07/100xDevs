@@ -83,6 +83,45 @@ for(int i = 0; i<n; i++){
 cout << ans << endl;
 
 
+// Search in 2D matrix
+int n, m;
+cin>>n>>m;
+ 
+int target;
+cin>>target;
+ 
+// Taking user input 
+int arr[n][m];
+ 
+for(int i = 0; i<n; i++)
+{
+    for(int j = 0; j<m; j++)
+    {
+        cin>>arr[i][j];
+    }
+}
+bool search = false;
+ 
+// Search in a 2D matrix
+ 
+for(int i = 0; i<n; i++)
+{
+    for(int j = 0; j<m; j++)
+    {
+        if(arr[i][j] == target)
+        {
+            search = true;
+        }
+    }
+}
+ 
+if(search){
+    cout<<"true"<<endl;
+}
+else{
+    cout<<"false"<<endl;
+}
+
 
 
 
