@@ -10,7 +10,7 @@ using namespace std;
     return ans;
  }
 
- //Function Rules
+//     Function Rules
 // Number of Parameters Must Match
 
 // Return Type Must Match
