@@ -8,8 +8,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "This repository contains my personal learning notes, code, and assignments from **100xDevs Bootcamp 1.0** by **Harkirat Bhaiya**.",
   "dependencies": {
     "express": "^5.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajaX07/100xDevs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rajaX07/100xDevs/issues"
+  },
+  "homepage": "https://github.com/rajaX07/100xDevs#readme"
 }
