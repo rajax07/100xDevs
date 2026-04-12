@@ -10,7 +10,8 @@
   "license": "ISC",
   "description": "This repository contains my personal learning notes, code, and assignments from **100xDevs Bootcamp 1.0** by **Harkirat Bhaiya**.",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
   },
   "repository": {
     "type": "git",

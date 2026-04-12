@@ -25,8 +25,11 @@
         async function addTodo() {
             await axios.post("http://localhost:3000/notes", {
                 note: document.getElementById("userNote").value
+            },{
+                    headers: {
+                    token: localStorage.getItem("token")
+                }
             })
-
 
             // Show the todo in the frontend
             const newNode = document.createElement("div");
@@ -36,17 +39,25 @@
 
             //make the input box empty again
             document.getElementById("userNote").value = "";
-
+            
+            getTodos();
         }
+
+        
         async function getTodos() {
-            const response = await axios.get("http://localhost:3000/notes")
+            const response = await axios.get("http://localhost:3000/notes", {
+                headers: {
+                    token: localStorage.getItem("token")
+                }
+            });
+                
             const notes = response.data.notes;
 
             document.getElementById("notes").innerHTML = "";
 
             for (let i = 0; i < notes.length; i++) {
                 const noteNote = document.createElement("div");
-                noteNote.innerHTML = notes[i];
+                noteNote.innerHTML = notes[i].note; //{username: "raja", note: "go to gym"}
                 noteNote.setAttribute("style", "border: 2px solid black; padding: 10px;");
                 document.getElementById("notes").appendChild(noteNote);
             }
