@@ -1,7 +1,6 @@
 const express = require("express")
-
 const jwt = require("jsonwebtoken");
-
+const { authMiddleware } = require("./middleware");
 
 //Design in memory data schema
 
@@ -98,8 +97,10 @@ app.post("/signin", (req, res) => {
 
 })
 
-app.post("/organization", (req, res) => {
-
+// Authenticated Endpoint
+app.post("/organization", authMiddleware, (req, res) => {
+    const user = req.userId;
+  
 })
 
 app.post("/add-member-to-organization", (req, res) => {
