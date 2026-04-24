@@ -148,7 +148,6 @@ app.post("/add-member-to-organization", authMiddleware, (req, res) => {
 app.post("/board", (req, res) => {
 
 })
-
 app.post("/issue", (req, res) => {
 
 })
