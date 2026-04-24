@@ -1,28 +1,20 @@
+const jwt = require("jsonwebtoken");
+
 function authMiddleware(req, res, next) {
-    const token = req.headers.token;
+    const token = req.headers.token; // jwt
 
-    if (!token) {
-        res.status(403).send({
-            message: "You are not logged in"
-        });
-        return;
-
-    }
-
-    const decoded = jwt.verify(token, "trello12134password")
-    const username = decoded.userId;
-
-    if (!userId) {
+    const decoded = jwt.verify(token, "trello12134password");
+    const userId = decoded.userId;
+    if (userId) {
+        req.userId = userId;
+        next();
+    } else {
         res.status(403).json({
-            message: "malformed token"
+            message: "Token was incorrect"
         })
-        return;
     }
-    req.username = username;
-
-    next();
 }
 
 module.exports = {
-    authMiddleware
+    authMiddleware: authMiddleware
 }
