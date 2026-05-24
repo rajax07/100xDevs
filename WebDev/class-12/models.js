@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("");
+mongoose.connect("mongodb+srv://kumarrajavishvakarma_db_user:8lUSbY3Z8SqNA48c@100xapps.gpn5jxw.mongodb.net/trello");
 
 
 const userSchema = mongoose.Schema({
@@ -12,7 +12,7 @@ const organizationSchema = mongoose.Schema({
         title: String,
         description: String,
         admin: mongoose.Types.ObjectId,
-        members: [mongoose.Types.ObjectId]
+        members: [mongoose.Types.ObjectId] // storing array of userId not usernames
 })
 
 
