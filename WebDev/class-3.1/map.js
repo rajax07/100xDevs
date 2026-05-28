@@ -1,6 +1,6 @@
 const arr = [5, 1, 3, 2, 6];
 
-// map is used to transform, 
+// map  is used to transform, 
 // transform means changing the value of each elements of the given array
 
 

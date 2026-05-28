@@ -22,7 +22,7 @@
 // console.log(answ)
 
 
-//    Map
+//    Map()
 
 // Given an array, give me back a new array in which every value is multiplied by 2
 // [1, 2, 3, 4, 5]
@@ -54,7 +54,7 @@ const input = [1, 2, 3 , 4, 5];
 // });
 // console.log(ans);
 
-//     filter
+//     filter()
 function filterLogic(n){
     if(n%2 == 0){
         return true;
