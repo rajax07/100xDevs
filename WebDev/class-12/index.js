@@ -30,11 +30,11 @@ app.post("/signup", async (req, res) => {
     return;
   }
 
-  const newUser =  await userModel.create ({
+  const newUser = await userModel.create({
     username: username,
     password: password
   })
- 
+
   res.json({
     id: newUser._id,
     message: "You have signed up successfully",
@@ -92,7 +92,7 @@ app.post("/add-member-to-organization", authMiddleware, async (req, res) => {
   const organizationId = req.body.organizationId; // get organization Id
   const memberUsername = req.body.memberUsername; // get the username of the member e.g. aakash
 
-  const organization =  await organizationModel.findOne({
+  const organization = await organizationModel.findOne({
     _id: organizationId
   });
 
@@ -104,7 +104,7 @@ app.post("/add-member-to-organization", authMiddleware, async (req, res) => {
     return;
   }
   // const memberUser = USERS.find((u) => u.username === memberUserUsername);
-  const memberUser =  await userModel.findOne({
+  const memberUser = await userModel.findOne({
     username: memberUsername
   })
 
@@ -122,16 +122,16 @@ app.post("/add-member-to-organization", authMiddleware, async (req, res) => {
   });
 });
 
-app.post("/board", (req, res) => {});
-app.post("/issue", (req, res) => {});
+app.post("/board", (req, res) => { });
+app.post("/issue", (req, res) => { });
 
 //GET endpoints
-app.get("/organization", authMiddleware, async(req, res) => {
+app.get("/organization", authMiddleware, async (req, res) => {
   const userId = req.userId;
   const organizationId = req.query.organizationId;
-  
 
-  const organization =  await organizationModel.findOne({
+
+  const organization = await organizationModel.findOne({
     _id: organizationId
   });
 
@@ -143,27 +143,27 @@ app.get("/organization", authMiddleware, async(req, res) => {
     return;
   }
   const members = await userModel.find({
-        _id: organization.members
-    })
+    _id: organization.members
+  })
 
-     res.json({
-        organization: {
-            title: organization.title,
-            description: organization.description,
-            members: members.map(m => ({
-                username: m.username,
-                id: m._id
-            }))
-        }
-    })
+  res.json({
+    organization: {
+      title: organization.title,
+      description: organization.description,
+      members: members.map(m => ({
+        username: m.username,
+        id: m._id
+      }))
+    }
+  })
 })
 
-app.get("/boards", (req, res) => {});
+app.get("/boards", (req, res) => { });
 
-app.get("/members", (req, res) => {});
+app.get("/members", (req, res) => { });
 
 //UPDATE
-app.put("/issues", (req, res) => {});
+app.put("/issues", (req, res) => { });
 //DELETE
 app.delete("/members", authMiddleware, async (req, res) => {
   const userId = req.userId;
@@ -195,13 +195,13 @@ app.delete("/members", authMiddleware, async (req, res) => {
   // we can even check
   console.log("before members");
   console.log(organization.members);
-  organization.members = organization.members.filter(x => x.toString()!== memberUser._id.toString());
+  organization.members = organization.members.filter(x => x.toString() !== memberUser._id.toString());
   console.log("after memeber");
   console.log(organization.members);
   await organization.save();
 
 
- 
+
 
   res.json({
     message: "member deletd!",

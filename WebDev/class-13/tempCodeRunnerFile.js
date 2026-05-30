@@ -3,7 +3,7 @@ const { Pool } = require('pg')
 const Jwt =  require("jsonwebtoken");
 
 const pool = new Pool({
-    connectionString: ""
+    connectionString: "postgresql://neondb_owner:npg_X9kBxHi0nobL@ep-round-firefly-aq6fdpuz-pooler.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 })
 
 const app = express();
@@ -14,9 +14,8 @@ app.post("/signup", async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
-    //A VERY BAD WAY TO DO SQL QUERY USING PG -----> THIS IS VULNERALBLE TO SQL INJECTION
-    // const response = await pool.query(`INSERT INTO users (username, email, password) VALUES ('${username}', '${email}', '${password}')RETURNING id;`)
-    const response = await pool.query(`INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id;`, [username, email, password])
+
+    const response = await pool.query(`INSERT INTO users (username, email, password) VALUES ('${username}', '${email}', '${password}')RETURNING id;`)
     console.log(response);
 
     res.json({
@@ -44,20 +43,9 @@ app.post("/signin", async (req, res) => {
         return;
     } 
     const token = Jwt.sign({
-        id: userExists.id
+        userId: userExists.id
     }, "alsdhgoehgbciihidhe")
 
     res.json({
         token,
     });
-
-
-
-});
-
-
-
-
-
-
-app.listen(3000);
