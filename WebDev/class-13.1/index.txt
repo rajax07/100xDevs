@@ -1,0 +1,26 @@
+# Relationship and Joins
+
+## Relationship 
+
+   1:many - One user can be admin of many organizations.
+           And One organization has only one admin.
+
+   many:many - Org can have multiple members.
+               users can be membeer of multiple orgs.
+
+   1:many - Every board will have multiple issue.
+
+
+   Constraints: Helps to strict the database.
+     1. NOT NULL
+     2. UNIQUE:
+     3. PRIMARY KEY:
+     4. FOREIGN KEY: Used to link two table together.
+     5. CHECK: Satisty a specific condtion or expression.
+     6. DEFAULT: 
+
+
+## Joins
+   
+   Joins: let you join the data from two (or more) tabel together.
+  
